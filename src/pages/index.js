@@ -1,21 +1,44 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import { graphql, useStaticQuery } from 'gatsby'
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = () => {
+  const { allContentfulProject: { projects } } = useStaticQuery(graphql`
+    query {
+      allContentfulProject {
+        projects: edges {
+          project: node {
+            title
+            key
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <Layout>
+      <SEO
+        title="William Hooke - Fullstack Engineer"
+        keywords={[`william hooke`, `fullstack engineer`, `react`]}
+      />
+      <h1>William Hooke</h1>
+      <h2>Full Stack Engineer</h2>
+      <ul>
+        {
+          projects.map(({ project: { title, key } }) => (
+            <li key={key}>
+              <Link to={`/work/${key}/`}>
+                {title}
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+    </Layout>
+  )
+}
 
 export default IndexPage
