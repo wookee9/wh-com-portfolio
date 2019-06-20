@@ -38,8 +38,9 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "lint": "eslint src",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "lint-fix": "eslint --ext .jsx,.js --fix .",
+    "lint": "eslint --ext .jsx,.js .",
+    "test": "yarn run lint"
   },
   "repository": {
     "type": "git",

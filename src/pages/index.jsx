@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "gatsby"
-import { graphql, useStaticQuery } from 'gatsby'
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React from 'react';
+import { Link, graphql, useStaticQuery } from 'gatsby';
+
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const IndexPage = () => {
   const { allContentfulProject: { projects } } = useStaticQuery(graphql`
@@ -21,8 +21,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO
-        title="William Hooke - Fullstack Engineer"
-        keywords={[`william hooke`, `fullstack engineer`, `react`]}
+        title="William Hooke - Full Stack Engineer"
+        keywords={['william hooke', 'full stack', 'engineer', 'react', 'london']}
       />
       <h1>William Hooke</h1>
       <h2>Full Stack Engineer</h2>
@@ -38,7 +38,7 @@ const IndexPage = () => {
         }
       </ul>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
