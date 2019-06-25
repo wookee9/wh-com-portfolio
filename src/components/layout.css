@@ -620,3 +620,11 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+nav.main-menu {
+  
+}
+
+.menu-links > a {
+  display: block;
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const IndexPage = () => {
+const ContactPage = () => {
   const {
     contentfulPage: {
       keywords,
@@ -13,7 +13,7 @@ const IndexPage = () => {
     },
   } = useStaticQuery(graphql`
     query {
-      contentfulPage(key: {eq: "home"}) {
+      contentfulPage(key: {eq: "contact"}) {
         keywords
         title
         content: childContentfulPageContentRichTextNode {
@@ -30,9 +30,8 @@ const IndexPage = () => {
         keywords={keywords}
       />
       {documentToReactComponents(content.json)}
-      <Link to="/work">Continue</Link>
     </Layout>
   );
 };
 
-export default IndexPage;
+export default ContactPage;
