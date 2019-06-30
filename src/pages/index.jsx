@@ -3,12 +3,17 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import AboutModule from '../content-modules/AboutModule';
+import ContactModule from '../content-modules/ContactModule';
+import WorkModule from '../content-modules/WorkModule';
+import FooterModule from '../content-modules/FooterModule';
+import ModuleLayout from '../components/ModuleLayout';
 
 const IndexPage = () => {
   const {
     contentfulPage: {
       keywords,
-      content,
+      content: { json },
       title,
     },
   } = useStaticQuery(graphql`
@@ -25,12 +30,20 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO
-        title={title}
-        keywords={keywords}
-      />
-      {documentToReactComponents(content.json)}
-      <Link to="/work">Continue</Link>
+      <ModuleLayout>
+        <div>
+          <SEO
+            title={title}
+            keywords={keywords}
+          />
+          {documentToReactComponents(json)}
+          <Link to="/#work">Continue</Link>
+        </div>
+      </ModuleLayout>
+      <WorkModule />
+      <AboutModule />
+      <ContactModule />
+      <FooterModule />
     </Layout>
   );
 };

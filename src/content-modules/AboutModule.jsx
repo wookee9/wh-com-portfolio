@@ -1,10 +1,10 @@
 import React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { graphql, useStaticQuery } from 'gatsby';
-import Layout from '../components/layout';
 import SEO from '../components/seo';
+import ModuleLayout from '../components/ModuleLayout';
 
-const AboutPage = () => {
+const AboutModule = () => {
   const {
     contentfulPage: {
       keywords,
@@ -24,14 +24,16 @@ const AboutPage = () => {
   `);
 
   return (
-    <Layout>
-      <SEO
-        title={title}
-        keywords={keywords}
-      />
-      {documentToReactComponents(content.json)}
-    </Layout>
+    <ModuleLayout>
+      <div id="about">
+        <SEO
+          title={title}
+          keywords={keywords}
+        />
+        {documentToReactComponents(content.json)}
+      </div>
+    </ModuleLayout>
   );
 };
 
-export default AboutPage;
+export default AboutModule;
