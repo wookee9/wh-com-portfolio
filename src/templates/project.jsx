@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from '../components/layout';
+import ProjectLayout from '../components/ProjectLayout';
 import SEO from '../components/seo';
 
 const ProjectTemplate = ({
@@ -9,11 +9,11 @@ const ProjectTemplate = ({
     projectKey,
   },
 }) => (
-  <Layout>
+  <ProjectLayout>
     <SEO title={title} />
     <h1 className={projectKey}>{title}</h1>
     <p>Project summary</p>
-  </Layout>
+  </ProjectLayout>
 );
 
 ProjectTemplate.propTypes = {

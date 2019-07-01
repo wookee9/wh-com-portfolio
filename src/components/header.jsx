@@ -31,9 +31,9 @@ const Header = ({ siteTitle }) => {
             role="button"
           >
             <Link to="/">Home</Link>
-            <Link to="/work">Work</Link>
-            <Link to="/about">About</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/#work">Work</Link>
+            <Link to="/#about">About</Link>
+            <Link to="/#contact">Contact</Link>
           </div>
         </nav>
       </div>

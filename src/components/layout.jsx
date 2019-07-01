@@ -36,9 +36,6 @@ const Layout = ({ children }) => (
           }}
         >
           <main>{children}</main>
-          <footer>
-            {`©WH ${new Date().getFullYear()}`}
-          </footer>
         </div>
       </>
     )}
