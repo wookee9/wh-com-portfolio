@@ -27,3 +27,26 @@ module.exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+module.exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.cast5$/,
+          use: [
+            {
+              loader: 'file-loader',
+              // Not including [ext] strips the .cast5 extension from the filename
+              options: { name: '[name]' },
+            },
+            {
+              loader: 'decryption-loader',
+              options: { password: process.env.SP_KEY },
+            },
+          ],
+        },
+      ],
+    },
+  });
+};

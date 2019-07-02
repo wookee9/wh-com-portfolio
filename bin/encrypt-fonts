@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+/* eslint-disable no-console */
+
+const fs = require('fs');
+const nodecipher = require('node-cipher');
+
+const dir = './src/fonts/';
+const fileNames = fs.readdirSync(dir);
+
+fileNames.map(file => nodecipher.encryptSync({
+  input: `${dir}${file}`,
+  output: `${dir}${file}.cast5`,
+  password: process.env.SP_KEY,
+}));
+
+console.log(`Finished processing ${fileNames}`);

@@ -8,9 +8,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
 
 import Header from './header';
-import './layout.css';
+import GlobalStyles from '../styles/GlobalStyles';
+
+const MainEl = styled.main`
+  position: relative;
+`;
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -26,17 +31,11 @@ const Layout = ({ children }) => (
     // eslint-disable-next-line no-unused-vars
     render={data => (
       <>
+        <GlobalStyles />
         <Header siteTitle="WH" />
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '1.45rem 5rem',
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-        </div>
+        <MainEl>
+          {children}
+        </MainEl>
       </>
     )}
   />

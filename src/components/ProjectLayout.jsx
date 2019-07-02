@@ -8,9 +8,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import GlobalStyles from '../styles/GlobalStyles';
 
 const ProjectLayout = ({ children }) => (
-  <div>
+  <>
+    <GlobalStyles />
     <Link to="/#work">Close</Link>
     <div
       style={{
@@ -22,7 +24,7 @@ const ProjectLayout = ({ children }) => (
     >
       <main>{children}</main>
     </div>
-  </div>
+  </>
 );
 
 ProjectLayout.propTypes = {

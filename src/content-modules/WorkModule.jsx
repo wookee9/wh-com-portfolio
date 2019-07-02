@@ -4,7 +4,11 @@ import SEO from '../components/seo';
 import ModuleLayout from '../components/ModuleLayout';
 
 const WorkModule = () => {
-  const { allContentfulProject: { projects } } = useStaticQuery(graphql`
+  const {
+    allContentfulProject: {
+      projects,
+    },
+  } = useStaticQuery(graphql`
     query {
       allContentfulProject {
         projects: edges {
@@ -18,25 +22,23 @@ const WorkModule = () => {
   `);
 
   return (
-    <ModuleLayout>
-      <div id="work">
-        <SEO
-          title="William Hooke - Full Stack Engineer - Selected Work"
-          keywords={['william hooke', 'full stack', 'engineer', 'react', 'london', 'work']}
-        />
-        <h2>Selected Work</h2>
-        <ul>
-          {
-            projects.map(({ project: { title, key } }) => (
-              <li key={key}>
-                <Link to={`/work/${key}/`}>
-                  {title}
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+    <ModuleLayout id="work">
+      <SEO
+        title="William Hooke - Full Stack Engineer - Selected Work"
+        keywords={['william hooke', 'full stack', 'engineer', 'react', 'london', 'work']}
+      />
+      <h2>Selected Work</h2>
+      <ul>
+        {
+          projects.map(({ project: { title, key } }) => (
+            <li key={key}>
+              <Link to={`/work/${key}/`}>
+                {title}
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
     </ModuleLayout>
   );
 };
