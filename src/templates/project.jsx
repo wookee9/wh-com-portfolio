@@ -17,7 +17,7 @@ const ProjectTemplate = ({
 );
 
 ProjectTemplate.propTypes = {
-  pageContext: PropTypes.exact({
+  pageContext: PropTypes.shape({
     title: PropTypes.string.isRequired,
     projectKey: PropTypes.string.isRequired,
   }).isRequired,

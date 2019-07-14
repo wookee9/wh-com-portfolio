@@ -24,14 +24,12 @@ const AboutModule = () => {
   `);
 
   return (
-    <ModuleLayout>
-      <div id="about">
-        <SEO
-          title={title}
-          keywords={keywords}
-        />
-        {documentToReactComponents(content.json)}
-      </div>
+    <ModuleLayout id="about">
+      <SEO
+        title={title}
+        keywords={keywords}
+      />
+      {documentToReactComponents(content.json)}
     </ModuleLayout>
   );
 };
