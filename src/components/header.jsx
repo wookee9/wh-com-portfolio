@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
-import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -70,10 +69,10 @@ const Header = ({ siteTitle }) => {
           role="button"
           showMenu={showMenu}
         >
-          <Link to="/">Home</Link>
-          <Link to="/#work">Work</Link>
-          <Link to="/#about">About</Link>
-          <Link to="/#contact">Contact</Link>
+          <a href="/#home">Home</a>
+          <a href="/#work">Work</a>
+          <a href="/#about">About</a>
+          <a href="/#contact">Contact</a>
         </Div>
       </NavEl>
     </HeaderEl>
