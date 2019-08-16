@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import SEO from '../components/seo';
 import ModuleLayout from '../components/ModuleLayout';
+import ProjectLightbox from '../components/ProjectLightbox';
 
 const WorkModule = () => {
   const {
@@ -28,17 +29,16 @@ const WorkModule = () => {
         keywords={['william hooke', 'full stack', 'engineer', 'react', 'london', 'work']}
       />
       <h2>Selected Work</h2>
-      <ul>
-        {
-          projects.map(({ project: { title, key } }) => (
-            <li key={key}>
-              <Link to={`/work/${key}/`}>
-                {title}
-              </Link>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        projects.map(({ project: { title, key } }) => (
+          // <li key={key}>
+          //   <Link to={`/work/${key}/`}>
+          //     {title}
+          //   </Link>
+          // </li>
+          <ProjectLightbox key={key} projectKey={key} title={title} />
+        ))
+      }
     </ModuleLayout>
   );
 };
