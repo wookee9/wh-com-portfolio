@@ -16,11 +16,15 @@ const WorkModule = () => {
           project: node {
             title
             key
+            client
           }
         }
       }
     }
   `);
+
+  const spyscape = projects.find(({ project: { key } }) => key === 'spyscape').project;
+  console.log(spyscape);
 
   return (
     <ModuleLayout id="work">
@@ -30,15 +34,17 @@ const WorkModule = () => {
       />
       <h2>Selected Work</h2>
       {
-        projects.map(({ project: { title, key } }) => (
-          // <li key={key}>
-          //   <Link to={`/work/${key}/`}>
-          //     {title}
-          //   </Link>
-          // </li>
-          <ProjectLightbox key={key} projectKey={key} title={title} />
-        ))
+        // projects.map(({ project }) => (
+        //   <ProjectLightbox
+        //     {...project}
+        //     projectKey={project.key}
+        //   />
+        // ))
       }
+      <ProjectLightbox
+        {...spyscape}
+        projectKey={spyscape.key}
+      />
     </ModuleLayout>
   );
 };

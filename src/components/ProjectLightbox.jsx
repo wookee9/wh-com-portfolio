@@ -4,37 +4,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-// const LogoH1 = styled.h1`
-//   font-size: 1rem;
-//   font-weight: 400;
-//   margin: 4vw 4vw;
-//   z-index: 1;
-//   position: relative;
-
-//   a {
-//     text-decoration: none;
-//     color: black;
-//   }
-// `;
-
-const TitleH2 = styled.p`
+const TitleH3 = styled.h3`
   font-size: 1.9rem;
   font-weight: 400;
   width: 100%;
-  /* background: blue; */
-  /* margin: 4vw 4vw; */
-  /* z-index: 1; */
-  /* position: relative; */
+  margin: 1rem;
 `;
 
-const SubtitleP = styled.p`
+const SubtitleH4 = styled.h4`
   font-size: 1rem;
   font-weight: 400;
   width: 100%;
-  /* background: red; */
-  /* margin: 4vw 4vw; */
-  /* z-index: 1; */
-  /* position: relative; */
+  margin: 1rem;
 `;
 
 const CoverLink = styled(Link)`
@@ -76,12 +57,12 @@ const LightboxDiv = styled.div`
   background-image: url(${props => props.img});
 `;
 
-const ProjectLightbox = ({ title, projectKey }) => (
+const ProjectLightbox = ({ title, client, projectKey }) => (
   <LightboxDiv img="icons/icon-512x512.png">
     <CoverLink to={`/work/${projectKey}/`}>
       <div>
-        <TitleH2>{title}</TitleH2>
-        <SubtitleP>Subtitle</SubtitleP>
+        <TitleH3>{title}</TitleH3>
+        <SubtitleH4>{client}</SubtitleH4>
       </div>
     </CoverLink>
   </LightboxDiv>
@@ -90,6 +71,7 @@ const ProjectLightbox = ({ title, projectKey }) => (
 ProjectLightbox.propTypes = {
   projectKey: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  client: PropTypes.string.isRequired,
 };
 
 
