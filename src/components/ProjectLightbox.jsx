@@ -8,32 +8,51 @@ const TitleH3 = styled.h3`
   font-size: 1.9rem;
   font-weight: 400;
   width: 100%;
-  margin: 1rem;
+  display: block;
+  /* position: absolute; */
+  margin: 0.8rem;
 `;
 
 const SubtitleH4 = styled.h4`
   font-size: 1rem;
   font-weight: 400;
   width: 100%;
-  margin: 1rem;
+  display: block;
+  margin: 0.8rem;
 `;
 
 const CoverLink = styled(Link)`
-  display: flex;
-  flex-direction: vertical;
-  align-items: center;
-  justify-content: center;
+  display: block;
   background: rgba(0,0,0,0.8);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  text-decoration: none;
-  transition: opacity 0.5s ease;
   font-size: 1.9rem;
   color: white;
   text-align: center;
+  width: ${props => props.w}%;
+  height: ${props => props.h}vh;
+  margin: 5px;
+  padding: 0;
+  text-decoration: none;
+  background: silver;
+`;
+
+const TitleContainerDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  font-size: 1.9rem;
+  color: white;
+  text-align: center;
+  background: rgba(0,0,0,0.8);
+  /* opacity: 0; */
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  transition: opacity 0.5s ease;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  z-index: 10;
 
   &:link,
   &:visited,
@@ -41,6 +60,7 @@ const CoverLink = styled(Link)`
     color: white;
     font-weight: 400;
     letter-spacing: 0.5px;
+    text-decoration: none;
   }
 
   &:hover {
@@ -48,30 +68,33 @@ const CoverLink = styled(Link)`
   }
 `;
 
-const LightboxDiv = styled.div`
-  width: 100%;
-  height: 70vh;
-  background: silver;
-  margin: 5px;
-  background-size: cover;
-  background-image: url(${props => props.img});
-`;
-
-const ProjectLightbox = ({ title, client, projectKey }) => (
-  <LightboxDiv img="icons/icon-512x512.png">
-    <CoverLink to={`/work/${projectKey}/`}>
-      <div>
-        <TitleH3>{title}</TitleH3>
-        <SubtitleH4>{client}</SubtitleH4>
-      </div>
-    </CoverLink>
-  </LightboxDiv>
+const ProjectLightbox = ({
+  title,
+  client,
+  projectKey,
+  w,
+  h,
+  image,
+}) => (
+  <CoverLink
+    {...{ w, h }}
+    to={`/work/${projectKey}/`}
+  >
+    <TitleContainerDiv>
+      <TitleH3>{title}</TitleH3>
+      <SubtitleH4>{client}</SubtitleH4>
+    </TitleContainerDiv>
+    {image}
+  </CoverLink>
 );
 
 ProjectLightbox.propTypes = {
   projectKey: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
+  image: PropTypes.node.isRequired,
+  w: PropTypes.number.isRequired,
+  h: PropTypes.number.isRequired,
 };
 
 
