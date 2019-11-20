@@ -3,19 +3,11 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Logo from './Logo';
+import MenuButton from './MenuButton';
 
 const HeaderEl = styled.header`
   position: fixed;
   z-index: 1;
-`;
-
-const Button = styled.button`
-  display: block;
-  position: fixed;
-  top: 4vw;
-  right: 4vw;
-  z-index: 1;
-  cursor: pointer;
 `;
 
 const Div = styled.div`
@@ -57,12 +49,10 @@ const Header = ({ siteTitle }) => {
         {siteTitle}
       </Logo>
       <NavEl>
-        <Button
+        <MenuButton
           onClick={handleEvent}
-          type="button"
-        >
-          Menu
-        </Button>
+          close={showMenu}
+        />
         <Div
           onClick={handleEvent}
           onKeyPress={handleEvent}
