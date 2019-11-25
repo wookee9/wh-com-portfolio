@@ -3,14 +3,19 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
+import { mediaBreakpointUpLG, mediaBreakpointUpMD } from '../styles/constants';
 
 const TitleH3 = styled.h3`
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   font-weight: 400;
   width: 100%;
   display: block;
   /* position: absolute; */
-  margin: 0.8rem;
+  margin: 0.5rem 0;
+
+  ${mediaBreakpointUpLG} {
+    font-size: 1.7rem;
+  }
 `;
 
 const SubtitleH4 = styled.h4`
@@ -18,21 +23,11 @@ const SubtitleH4 = styled.h4`
   font-weight: 400;
   width: 100%;
   display: block;
-  margin: 0.8rem;
-`;
+  margin: 0.5rem 0;
 
-const CoverLink = styled(Link)`
-  display: block;
-  background: rgba(0,0,0,0.8);
-  font-size: 1.9rem;
-  color: white;
-  text-align: center;
-  width: ${props => props.w}%;
-  height: ${props => props.h}vh;
-  margin: 5px;
-  padding: 0;
-  text-decoration: none;
-  background: silver;
+  ${mediaBreakpointUpLG} {
+    font-size: 1rem;
+  }
 `;
 
 const TitleContainerDiv = styled.div`
@@ -44,15 +39,16 @@ const TitleContainerDiv = styled.div`
   color: white;
   text-align: center;
   background: rgba(0,0,0,0.8);
-  /* opacity: 0; */
+  opacity: 0;
   margin: 0;
   padding: 0;
   text-decoration: none;
-  transition: opacity 0.5s ease;
   width: inherit;
   height: inherit;
   position: absolute;
-  z-index: 10;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 
   &:link,
   &:visited,
@@ -68,16 +64,33 @@ const TitleContainerDiv = styled.div`
   }
 `;
 
+
+const CoverLink = styled(Link)`
+  display: block;
+  background: rgba(0,0,0,0.8);
+  font-size: 1.9rem;
+  color: white;
+  text-align: center;
+  padding: 0;
+  text-decoration: none;
+  background: silver;
+  transition: opacity 0.5s ease;
+  margin-bottom: 4px;
+
+  ${mediaBreakpointUpMD} {
+    margin-right: 4px;
+  }
+`;
+
 const ProjectLightbox = ({
   title,
   client,
   projectKey,
-  w,
-  h,
   image,
+  className,
 }) => (
   <CoverLink
-    {...{ w, h }}
+    {...{ className }}
     to={`/work/${projectKey}/`}
   >
     <TitleContainerDiv>
@@ -93,8 +106,7 @@ ProjectLightbox.propTypes = {
   title: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
   image: PropTypes.node.isRequired,
-  w: PropTypes.number.isRequired,
-  h: PropTypes.number.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 

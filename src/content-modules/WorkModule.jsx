@@ -4,8 +4,20 @@ import React from 'react';
 // import Img from 'gatsby-image';
 import styled from 'styled-components';
 import ModuleLayout from '../components/ModuleLayout';
-import ProjectLightbox from '../components/ProjectLightbox';
-import TreeA from '../thumbnails/TreeA';
+import SpyscapeNY from '../thumbnails/SpyscapeNY';
+import SpyscapeCom from '../thumbnails/SpyscapeCom';
+import ChristmasTreeBig from '../thumbnails/ChristmasTreeBig';
+import ChristmasTreeClose from '../thumbnails/ChristmasTreeClose';
+import BurberryScarf from '../thumbnails/BurberryScarf';
+import GumulonMouth from '../thumbnails/GumulonMouth';
+import GumulonMonster from '../thumbnails/GumulonMonster';
+import MorkUlnes from '../thumbnails/MorkUlnes';
+import HondaJazz from '../thumbnails/HondaJazz';
+import AlphaLabsA from '../thumbnails/AlphaLabsA';
+import AlphaLabsBall from '../thumbnails/AlphaLabsBall';
+import ChocolateCoin from '../thumbnails/ChocolateCoin';
+import Ghost from '../thumbnails/Ghost';
+import Experiments from '../thumbnails/Experiments';
 
 const ProjectContainerDiv = styled.div`
   display: flex;
@@ -17,46 +29,20 @@ const WorkModule = () => (
   <ModuleLayout id="work">
     <h2>Selected Work</h2>
     <ProjectContainerDiv>
-      <ProjectLightbox
-        title="Spyscape New York"
-        client="Spyscape"
-        projectKey="spyscape"
-        w={50}
-        h={50}
-        image={<TreeA />}
-      />
-      <ProjectLightbox
-        title="Spyscape.com"
-        client="Spyscape"
-        projectKey="spyscape"
-        w={40}
-        h={40}
-        image={<TreeA />}
-      />
-      <ProjectLightbox
-        title="Christmas Tree"
-        client="Burberry for Claridge's"
-        projectKey="spyscape"
-        w={40}
-        h={40}
-        image={<TreeA />}
-      />
-      <ProjectLightbox
-        title="Title"
-        client="Client"
-        projectKey="spyscape"
-        w={60}
-        h={40}
-        image={<TreeA />}
-      />
-      <ProjectLightbox
-        title="Title"
-        client="Client"
-        projectKey="spyscape"
-        w={50}
-        h={40}
-        image={<TreeA />}
-      />
+      <SpyscapeNY />
+      <SpyscapeCom />
+      <ChristmasTreeBig />
+      <ChristmasTreeClose />
+      <BurberryScarf />
+      <GumulonMouth />
+      <GumulonMonster />
+      <MorkUlnes />
+      <HondaJazz />
+      <AlphaLabsA />
+      <AlphaLabsBall />
+      <ChocolateCoin />
+      <Ghost />
+      <Experiments />
     </ProjectContainerDiv>
   </ModuleLayout>
 );
