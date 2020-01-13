@@ -21,6 +21,6 @@ const SpyscapeCom = () => (
     projectKey="spyscapecom"
     image={<TreeA />}
   />
-)
+);
 
 export default SpyscapeCom;
