@@ -10,6 +10,7 @@ const LogoH1 = styled.h1`
   margin: 4vw 4vw;
   z-index: 1;
   position: relative;
+  letter-spacing: 0.15rem;
 
   a {
     text-decoration: none;
