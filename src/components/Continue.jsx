@@ -1,15 +1,16 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-const ContinueLink = props => (
+const ContinueLink = ({ visible, ...props }) => (
   <Link to="/#work" {...props}>
     <svg
       height="20"
       width="20"
       viewBox="0 0 20 20"
       role="img"
-      ariaLabelledby="title"
+      aria-labelledby="title"
     >
       <title id="title">Continue</title>
       <polyline
@@ -24,6 +25,10 @@ const ContinueLink = props => (
   </Link>
 );
 
+ContinueLink.propTypes = {
+  visible: PropTypes.bool.isRequired,
+};
+
 const Continue = styled(ContinueLink)`
   width: 20px;
   height: 20px;
@@ -34,7 +39,7 @@ const Continue = styled(ContinueLink)`
   left: 50%;
   transform: translateX(-50%);
   transition: opacity .25s;
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  opacity: ${({ visible }) => (visible ? '1' : '0')};
 `;
 
 export default Continue;

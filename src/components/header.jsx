@@ -12,7 +12,7 @@ const HeaderEl = styled.header`
   position: fixed;
   z-index: 1;
   transition: opacity .25s;
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  opacity: ${({ visible }) => (visible ? '1' : '0')};
 `;
 
 const Div = styled.div`
