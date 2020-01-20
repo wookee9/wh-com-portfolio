@@ -16,7 +16,8 @@ const HeaderEl = styled.header`
 `;
 
 const Div = styled.div`
-  display: ${({ showMenu }) => (showMenu ? 'flex' : 'none')};
+  /* display: ${({ showMenu }) => (showMenu ? 'flex' : 'none')}; */
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -26,6 +27,11 @@ const Div = styled.div`
   width: 100%;
   height: 100%;
   background: white;
+  /* opacity: 1; */
+  visibility: ${({ showMenu }) => (showMenu ? 'visible' : 'hidden')};
+  opacity: ${({ showMenu }) => (showMenu ? '1' : '0')};
+  /* visibility: visible; */
+  transition: opacity visibility .25s;
 
   a {
     font-size: 1.9rem;
