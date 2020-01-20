@@ -2,12 +2,17 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 import Logo from './Logo';
 import MenuButton from './MenuButton';
+import PositionTracker from './PositionTracker';
+import Continue from './Continue';
 
 const HeaderEl = styled.header`
   position: fixed;
   z-index: 1;
+  transition: opacity .25s;
+  opacity: ${({ visible }) => (visible ? '1' : '0')};
 `;
 
 const Div = styled.div`
@@ -41,40 +46,41 @@ const NavEl = styled.nav`
 
 const Header = ({ siteTitle }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [ref, inView] = useInView();
   const handleEvent = () => setShowMenu(!showMenu);
 
   return (
-    <HeaderEl>
-      <Logo>
-        {siteTitle}
-      </Logo>
-      <NavEl>
-        <MenuButton
-          onClick={handleEvent}
-          close={showMenu}
-        />
-        <Div
-          onClick={handleEvent}
-          onKeyPress={handleEvent}
-          role="button"
-          showMenu={showMenu}
-        >
-          <a href="/#home">Home</a>
-          <a href="/#work">Work</a>
-          <a href="/#about">About</a>
-          <a href="/#contact">Contact</a>
-        </Div>
-      </NavEl>
-    </HeaderEl>
+    <>
+      <PositionTracker ref={ref} />
+      <HeaderEl visible={!inView}>
+        <Logo>
+          {siteTitle}
+        </Logo>
+        <NavEl>
+          <MenuButton
+            onClick={handleEvent}
+            close={showMenu}
+          />
+          <Div
+            onClick={handleEvent}
+            onKeyPress={handleEvent}
+            role="button"
+            showMenu={showMenu}
+          >
+            <a href="/#home">Home</a>
+            <a href="/#work">Work</a>
+            <a href="/#about">About</a>
+            <a href="/#contact">Contact</a>
+          </Div>
+        </NavEl>
+      </HeaderEl>
+      <Continue visible={inView} />
+    </>
   );
 };
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
-};
-
-Header.defaultProps = {
-  siteTitle: '',
+  siteTitle: PropTypes.string.isRequired,
 };
 
 export default Header;

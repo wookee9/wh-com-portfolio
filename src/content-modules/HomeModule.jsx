@@ -1,20 +1,9 @@
 import React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import SEO from '../components/seo';
 import ModuleLayout from '../components/ModuleLayout';
-
-const ContinueLink = props => (
-  <Link to="/#work" {...props}>Continue</Link>
-);
-
-const Continue = styled(ContinueLink)`
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-`;
 
 const HomeModuleLayout = styled(ModuleLayout)`
   display: flex;
@@ -70,7 +59,6 @@ const HomeModule = () => {
       <WrapperDiv>
         {documentToReactComponents(json)}
       </WrapperDiv>
-      <Continue />
     </HomeModuleLayout>
   );
 };
