@@ -52,7 +52,7 @@ const Header = ({ siteTitle }) => {
   return (
     <>
       <PositionTracker ref={ref} />
-      <HeaderEl visible={!inView}>
+      <HeaderEl visible={!inView || showMenu}>
         <Logo>
           {siteTitle}
         </Logo>
