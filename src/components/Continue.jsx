@@ -32,7 +32,7 @@ ContinueLink.propTypes = {
 const Continue = styled(ContinueLink)`
   width: 20px;
   height: 20px;
-  z-index: 1;
+  z-index: 0;
   position: fixed;
   display: block;
   bottom: 3rem;

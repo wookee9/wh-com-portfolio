@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
+/* global document */
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -48,11 +49,17 @@ const Header = ({ siteTitle }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [ref, inView] = useInView();
   const handleEvent = () => setShowMenu(!showMenu);
+  const showHeader = !inView || showMenu;
+
+  // guard against missing document during SSR
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = showMenu ? 'hidden' : 'visible';
+  }
 
   return (
     <>
       <PositionTracker ref={ref} />
-      <HeaderEl visible={!inView}>
+      <HeaderEl visible={showHeader}>
         <Logo>
           {siteTitle}
         </Logo>
