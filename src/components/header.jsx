@@ -50,7 +50,11 @@ const Header = ({ siteTitle }) => {
   const [ref, inView] = useInView();
   const handleEvent = () => setShowMenu(!showMenu);
   const showHeader = !inView || showMenu;
-  document.body.style.overflow = showMenu ? 'hidden' : 'visible';
+
+  // guard against missing document during SSR
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = showMenu ? 'hidden' : 'visible';
+  }
 
   return (
     <>
