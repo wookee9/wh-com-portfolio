@@ -17,7 +17,10 @@ const HeaderEl = styled.header`
 `;
 
 const Div = styled.div`
-  display: ${({ showMenu }) => (showMenu ? 'flex' : 'none')};
+  display: flex;
+  transition: opacity .25s, visibility .25s;
+  opacity: ${({ showMenu }) => (showMenu ? '1' : '0')};
+  visibility: ${({ showMenu }) => (showMenu ? 'visible' : 'hidden')};
   justify-content: center;
   align-items: center;
   flex-direction: column;
